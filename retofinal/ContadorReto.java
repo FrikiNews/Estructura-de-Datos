@@ -1,14 +1,6 @@
 package retofinal;
 
-/**
- * Resultado de una implementacion en el modo opcional de "reto por tiempo":
- * cuantas colecciones alcanzo a ordenar dentro del limite y su tiempo
- * promedio por coleccion.
- *
- * @author friki
- */
 public class ContadorReto {
-
     private final String algoritmo;
     private final String estructura;
     private final int coleccionesCompletadas;

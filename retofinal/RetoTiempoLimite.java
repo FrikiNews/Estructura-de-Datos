@@ -7,26 +7,7 @@ import java.util.Locale;
 import java.util.Random;
 import java.util.concurrent.ConcurrentHashMap;
 
-/**
- * Reto opcional: durante un tiempo limite, cada una de las 12
- * implementaciones genera y ordena tantas colecciones nuevas como pueda.
- * No sustituye la comparacion obligatoria de Main; es un segundo modo de
- * ejecucion que el usuario activa desde el menu si quiere.
- *
- * Igual que en la comparacion principal, la generacion de los datos no
- * cuenta dentro del tiempo que se promedia: solo se mide desde que empieza
- * el ordenamiento hasta que termina. Cada hilo usa su propio Random y sus
- * propias colecciones, asi que no comparten nada modificable.
- *
- * Detalle a documentar en el reporte: el limite se revisa antes de empezar
- * cada coleccion, no a media ordenada. Si un ordenamiento ya arranco cuando
- * se acaba el tiempo, se le deja terminar; por eso con colecciones grandes
- * y metodos O(n^2) la ventana real puede pasarse del limite pedido.
- *
- * @author friki
- */
 public class RetoTiempoLimite {
-
     public static void ejecutar(int cantidad, boolean rangoRestringido, int segundosLimite) {
         System.out.println();
         System.out.println("=".repeat(72));
@@ -79,7 +60,6 @@ public class RetoTiempoLimite {
 
     private static void contarConArreglo(Algoritmo algoritmo, int cantidad, boolean rangoRestringido,
             int segundosLimite, ConcurrentHashMap<String, ContadorReto> resultados) {
-
         long limiteNanos = segundosLimite * 1_000_000_000L;
         long inicioVentana = System.nanoTime();
         Random random = new Random();
@@ -99,7 +79,6 @@ public class RetoTiempoLimite {
 
     private static void contarConLista(Algoritmo algoritmo, int cantidad, boolean rangoRestringido,
             int segundosLimite, ConcurrentHashMap<String, ContadorReto> resultados) {
-
         long limiteNanos = segundosLimite * 1_000_000_000L;
         long inicioVentana = System.nanoTime();
         Random random = new Random();
@@ -129,7 +108,6 @@ public class RetoTiempoLimite {
 
     private static void guardar(ConcurrentHashMap<String, ContadorReto> resultados, String algoritmo,
             String estructura, int completadas, long sumaTiempoNanos) {
-
         double promedioMs = completadas > 0 ? (sumaTiempoNanos / 1_000_000.0) / completadas : 0.0;
         resultados.put(algoritmo + "_" + estructura,
                 new ContadorReto(algoritmo, estructura, completadas, promedioMs));

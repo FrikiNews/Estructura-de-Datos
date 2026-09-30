@@ -3,24 +3,7 @@ package retofinal;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
-/**
- * Una de las 12 implementaciones, lista para correr en su propio Thread.
- *
- * Cada tarea ya recibe su propia copia de los datos (arreglo o lista),
- * hecha antes de crear los hilos, asi que nunca comparte una coleccion
- * modificable con otra tarea. Lo unico que los 12 hilos si comparten es el
- * arreglo "esperado" (los datos ya ordenados que sirven de referencia para
- * verificar) y el mapa de resultados; el primero solo se lee y el segundo
- * es un ConcurrentHashMap, asi que ninguno necesita bloqueos.
- *
- * Dentro de run() solo se mide el tiempo del ordenamiento en si: ni la
- * generacion de numeros, ni la copia, ni la creacion del hilo, ni la
- * verificacion posterior entran en el tiempo medido.
- *
- * @author friki
- */
 public class TareaOrdenamiento implements Runnable {
-
     private final String algoritmo;
     private final String estructura;
     private final int[] arreglo;

@@ -9,19 +9,7 @@ import retofinal.algoritmos.ShellSort;
 
 import java.util.List;
 
-/**
- * Catalogo de los seis metodos de ordenamiento. Cada Algoritmo junta su
- * nombre con sus dos versiones (la que trabaja sobre int[] y la que trabaja
- * sobre ArrayList&lt;Integer&gt;), de ahi salen las 12 implementaciones.
- *
- * Tener la lista en un solo lugar evita repetir los seis registros en Main
- * y en RetoTiempoLimite: es lo unico que habria que tocar para agregar un
- * septimo metodo de ordenamiento.
- *
- * @author friki
- */
 public class Algoritmo {
-
     private static final List<Algoritmo> TODOS = List.of(
             new Algoritmo("Bubble Sort", BubbleSort::ordenarArreglo, BubbleSort::ordenarLista),
             new Algoritmo("Selection Sort", SelectionSort::ordenarArreglo, SelectionSort::ordenarLista),
@@ -40,7 +28,6 @@ public class Algoritmo {
         this.ordenadorLista = ordenadorLista;
     }
 
-    /** Los seis metodos de ordenamiento, en el orden en que se presentan. */
     public static List<Algoritmo> todos() {
         return TODOS;
     }

@@ -11,17 +11,12 @@ import java.util.Scanner;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class Main {
-
-    /** 6 algoritmos x 2 estructuras. */
     private static final int TOTAL_IMPLEMENTACIONES = Algoritmo.todos().size() * 2;
 
-    /** Arriba de esta cantidad se avisa al usuario antes de correr la prueba. */
     private static final int CANTIDAD_GRANDE = 200_000;
 
-    /** Rango de los valores aleatorios cuando no se restringe a 1-5. */
     private static final int VALOR_MAXIMO = 1_000_000;
 
-   
     private static final Thread.UncaughtExceptionHandler MANEJADOR_ERRORES =
             (hilo, error) -> System.out.println(">> El hilo " + hilo.getName() + " falló: " + error);
 
@@ -57,8 +52,6 @@ public class Main {
         System.out.println("\nPrograma finalizado.");
         sc.close();
     }
-
-    // ---------------- COMPARACION OBLIGATORIA DE LAS 12 ----------------
 
     private static void ejecutarComparacion(Scanner sc) {
         int cantidad = pedirCantidad(sc);
@@ -103,7 +96,6 @@ public class Main {
 
     private static List<Thread> crearHilos(int[] datosOriginales, List<Integer> baseLista, int[] esperado,
             ConcurrentHashMap<String, ResultadoOrden> resultados) {
-
         List<Thread> hilos = new ArrayList<>();
         for (Algoritmo algoritmo : Algoritmo.todos()) {
             int[] copiaArreglo = Arrays.copyOf(datosOriginales, datosOriginales.length);
@@ -148,8 +140,6 @@ public class Main {
         System.out.println("Los " + hilos.size() + " hilos terminaron.");
         return (finTotal - inicioTotal) / 1_000_000.0;
     }
-
-    // ---------------- SALIDA ----------------
 
     private static void imprimirTabla(List<ResultadoOrden> ordenados) {
         System.out.println();
@@ -214,8 +204,6 @@ public class Main {
         System.out.println("ArrayList<Integer> que la del arreglo int[] del mismo algoritmo.");
     }
 
-    // ---------------- COMPLEJIDAD TEORICA (BIG O) ----------------
-
     private static void mostrarComplejidadBigO() {
         System.out.println();
         System.out.println("COMPLEJIDAD TEMPORAL TEÓRICA (Big O)");
@@ -237,8 +225,6 @@ public class Main {
         System.out.println("directamente los milisegundos medidos arriba.");
     }
 
-    // ---------------- RETO OPCIONAL ----------------
-
     private static void ejecutarRetoOpcional(Scanner sc) {
         System.out.println("\nEn este modo, cada implementación ordena tantas colecciones nuevas");
         System.out.println("como alcance dentro del tiempo límite que indiques.");
@@ -251,8 +237,6 @@ public class Main {
 
         RetoTiempoLimite.ejecutar(cantidad, rangoRestringido, segundos);
     }
-
-    // ---------------- ENTRADA DEL USUARIO ----------------
 
     private static int[] generar(int cantidad, boolean rangoRestringido) {
         return rangoRestringido
